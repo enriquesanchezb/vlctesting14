@@ -9,6 +9,7 @@
 /spec/reports/
 /test/tmp/
 /test/version_tmp/
+/test_servers
 /tmp/
 
 ## Specific to RubyMotion:
@@ -39,3 +40,5 @@ build/
 *.jpg
 *.png
 *.jpeg
+
+.gitmodules
