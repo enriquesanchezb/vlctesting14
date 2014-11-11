@@ -66,7 +66,7 @@ class LoginPage < Calabash::IBase
 
 
 
-    wait_for(timeout: 60) do
+    wait_for(:timeout => 60) do
       if element_exists("label text:'Need Help?'")
         result = :invalid
       elsif element_exists(site_page.trait)
@@ -79,7 +79,7 @@ class LoginPage < Calabash::IBase
       when :invalid
         self
       else
-        site_page.await(timeout:10)
+        site_page.await(:timeout => 10)
     end
   end
 

@@ -16,24 +16,29 @@
 
 require 'calabash-cucumber/launcher'
 
+# noinspection ALL
+module LaunchControl
+  @@launcher = nil
 
-Before do |scenario|
-  @calabash_launcher = Calabash::Cucumber::Launcher.new
-  scenario_tags = scenario.source_tag_names
-  if scenario_tags.include?('@reinstall')
-    @calabash_launcher.reset_app_jail
+  def self.launcher
+    @@launcher ||= Calabash::Cucumber::Launcher.new
   end
-  unless @calabash_launcher.calabash_no_launch?
-    @calabash_launcher.relaunch()
-    @calabash_launcher.calabash_notify(self)
+
+  def self.launcher=(launcher)
+    @@launcher = launcher
   end
 end
 
+Before do |scenario|
+  LaunchControl.launcher.relaunch
+  LaunchControl.launcher.calabash_notify(self)
+end
+
 After do |scenario|
-  unless @calabash_launcher.calabash_no_stop?
-    calabash_exit
-    if @calabash_launcher.active?
-      @calabash_launcher.stop
-    end
-  end
+
+end
+
+at_exit do
+  launcher = LaunchControl.launcher
+  launcher.stop unless launcher.calabash_no_stop?
 end

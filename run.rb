@@ -16,7 +16,7 @@ end
 if target == 'android'
   exec("export APP=apps/Android-debug.apk && bundle exec calabash-android run $APP -p android #{ARGV.join(' ')}")
 elsif target == 'ios'
-  exec("export APP=apps/WordPress-cal.app && export APP_BUNDLE_PATH=$APP && bundle exec cucumber -p ios #{ARGV.join(' ')}")
+  exec("export APP=apps/WordPress-cal.app && export APP_BUNDLE_PATH=$APP && export NO_LAUNCH=1 && bundle exec cucumber -p ios #{ARGV.join(' ')}")
 else
   puts "Invalid target #{target}"
 end

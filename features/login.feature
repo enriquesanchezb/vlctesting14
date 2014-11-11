@@ -3,7 +3,7 @@ Feature: Initial experience
   experience with the app. I should be able to get help
   and login to an existing WordPress site.
 
-  @info @reinstall
+  @infos
   Scenario: Obtaining more information
     Given I am on the first experience screen
     And I choose to get more information
@@ -19,8 +19,6 @@ Feature: Initial experience
     Given I am about to login
     When I enter invalid credentials
     Then I am presented with an error message to correct credentials
-
-
 
   @valid
   Scenario: Add site

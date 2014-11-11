@@ -1,9 +1,6 @@
 Given(/^I am about to login$/) do
-
-  @current_page = page(LoginPage).await(timeout: 30)
+  @current_page = page(LoginPage).await(:timeout => 30)
   @current_page.self_hosted_site
-
-
 end
 
 
@@ -37,7 +34,7 @@ When(/^I can see posts for the site$/) do
 end
 
 Given(/^I am on the first experience screen$/) do
-  @current_page = page(LoginPage).await(timeout: 30)
+  @current_page = page(LoginPage).await(:timeout => 30)
 end
 
 When(/^I choose to get more information$/) do

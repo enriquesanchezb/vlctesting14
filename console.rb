@@ -14,9 +14,9 @@ EOF
 end
 
 if target == 'android'
-  exec("bundle exec calabash-android console apps/Android-debug.apk")
+  exec("CALABASH_IRBRC=~/.irbrc bundle exec calabash-android console apps/Android-debug.apk")
 elsif target == 'ios'
-  exec("APP_BUNDLE_PATH=apps/WordPress-cal.app bundle exec calabash-ios console")
+  exec("CALABASH_IRBRC=~/.irbrc APP_BUNDLE_PATH=apps/WordPress-cal.app bundle exec calabash-ios console")
 else
     puts "Invalid target #{target}"
 end
